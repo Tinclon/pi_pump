@@ -36,10 +36,10 @@ def inputChange():
             print("PUMP ON")
             pumpIsOn = True
             GPIO.output(OUTPUT_PIN, GPIO.HIGH)
-        if pumpIsOn = True
+        if pumpIsOn = True:
             print("Current Speed: ", hits)
     finally:
-        if pumpIsOn is True
+        if pumpIsOn is True:
             print("PUMP OFF")
         GPIO.output(OUTPUT_PIN, GPIO.LOW)
         listen()
