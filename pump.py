@@ -33,7 +33,7 @@ def inputChange():
             hits += GPIO.input(INPUT_PIN)
             sleep(0.001)
         currentSpeed = hits
-        if pumpIsOn is False and currentSpeed > 1 and currentSpeed < 100:
+        if pumpIsOn is False and currentSpeed > 1:
             print("PUMP ON")
             pumpIsOn = True
             GPIO.output(OUTPUT_PIN, GPIO.LOW)
