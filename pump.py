@@ -4,6 +4,7 @@ from time import sleep
 from RPi.GPIO as GPIO
 
 INPUT_PIN = 8
+OUTPUT_PIN = 11
 
 def cleanup():
     GPIO.setwarnings(False)
@@ -12,10 +13,12 @@ def cleanup():
 def setup():
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(INPUT_PIN, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+    GPIO.setup(OUTPUT_PIN, GPIO.OUT)
 
 def inputChange():
     GPIO.remove_event_detect(INPUT_PIN)
     print("PUMP ON")
+    GPIO.output(OUTPUT_PIN, GPIO.HIGH)
     sleep(1)
     currentSpeed = 1
     try:
@@ -28,6 +31,7 @@ def inputChange():
         print("Current Speed: ", hits)
     finally:
         print("PUMP OFF")
+        GPIO.output(OUTPUT_PIN, GPIO.LOW)
         listen()
 
 def listen():
