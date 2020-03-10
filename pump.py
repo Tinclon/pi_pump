@@ -6,6 +6,7 @@ from RPi.GPIO as GPIO
 INPUT_PIN = 8
 
 def cleanup():
+    GPIO.setwarnings(False)
     GPIO.cleanup()
 
 def setup():
