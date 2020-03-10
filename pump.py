@@ -23,9 +23,7 @@ def setup():
 
 def inputChange():
     GPIO.remove_event_detect(INPUT_PIN)
-    print("PUMP ON")
-    GPIO.output(OUTPUT_PIN, GPIO.HIGH)
-    sleep(1)
+    pumpIsOn = False
     currentSpeed = 1
     try:
         while currentSpeed > 0 and currentSpeed < 500
@@ -34,9 +32,15 @@ def inputChange():
             hits += GPIO.input(INPUT_PIN)
             sleep(0.001)
         currentSpeed = hits
-        print("Current Speed: ", hits)
+        if pumpIsOn is False and currentSpeed > 50 and currentSpeed < 450:
+            print("PUMP ON")
+            pumpIsOn = True
+            GPIO.output(OUTPUT_PIN, GPIO.HIGH)
+        if pumpIsOn = True
+            print("Current Speed: ", hits)
     finally:
-        print("PUMP OFF")
+        if pumpIsOn is True
+            print("PUMP OFF")
         GPIO.output(OUTPUT_PIN, GPIO.LOW)
         listen()
 
