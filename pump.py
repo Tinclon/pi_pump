@@ -13,8 +13,8 @@ def setup():
     GPIO.setup(INPUT_PIN, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 def inputChange():
-    print("PUMP ON")
     GPIO.remove_event_detect(INPUT_PIN)
+    print("PUMP ON")
     sleep(1)
     currentSpeed = 1
     try:
