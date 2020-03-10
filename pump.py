@@ -3,7 +3,7 @@
 from time import sleep
 from RPi.GPIO as GPIO
 
-INPUT_PIN=8
+INPUT_PIN = 8
 
 def cleanup():
     GPIO.cleanup()
@@ -16,9 +16,9 @@ def inputChange():
     print("PUMP ON")
     GPIO.remove_event_detect(INPUT_PIN)
     sleep(1)
-    currentSpeed = 100
+    currentSpeed = 1
     try:
-        while currentSpeed > 10 and currentSpeed < 490
+        while currentSpeed > 0 and currentSpeed < 500
         hits = 0
         for x in range (0,500):
             hits += GPIO.input(INPUT_PIN)
