@@ -3,8 +3,11 @@
 from time import sleep
 from RPi.GPIO as GPIO
 
-INPUT_PIN = 8
-OUTPUT_PIN = 11
+POWER_PIN  = 18
+GROUND_PIN = 20
+INPUT_PIN  = 22
+
+OUTPUT_PIN = 8
 
 def cleanup():
     GPIO.setwarnings(False)
@@ -13,7 +16,10 @@ def cleanup():
 def setup():
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(INPUT_PIN, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+    GPIO.setup(POWER_PIN, GPIO.OUT)
     GPIO.setup(OUTPUT_PIN, GPIO.OUT)
+    GPIO.output(POWER_PIN, GPIO.HIGH)
+
 
 def inputChange():
     GPIO.remove_event_detect(INPUT_PIN)
