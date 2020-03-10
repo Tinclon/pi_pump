@@ -33,7 +33,7 @@ def listen():
     cleanup()
     setup()
     print("LISTENING")
-    GPIO.add_event_detect(INPUT_PIN, GPIO.BOTH, callback=lambda pin: inputChange(), bouncetime=500)
+    GPIO.add_event_detect(INPUT_PIN, GPIO.BOTH, callback=lambda pin: inputChange(), bouncetime = 500)
     try:
         while True:
             sleep(1)
