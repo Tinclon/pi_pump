@@ -19,6 +19,7 @@ def setup():
     GPIO.setup(POWER_PIN, GPIO.OUT)
     GPIO.setup(OUTPUT_PIN, GPIO.OUT)
     GPIO.output(POWER_PIN, GPIO.HIGH)
+    GPIO.output(OUTPUT_PIN, GPIO.HIGH)
 
 
 def inputChange():
@@ -26,29 +27,29 @@ def inputChange():
     pumpIsOn = False
     currentSpeed = 1
     try:
-        while currentSpeed > 0 and currentSpeed < 500
+        while currentSpeed > 0 and currentSpeed < 100
         hits = 0
-        for x in range (0,500):
+        for x in range (0,100):
             hits += GPIO.input(INPUT_PIN)
             sleep(0.001)
         currentSpeed = hits
-        if pumpIsOn is False and currentSpeed > 50 and currentSpeed < 450:
+        if pumpIsOn is False and currentSpeed > 1 and currentSpeed < 100:
             print("PUMP ON")
             pumpIsOn = True
-            GPIO.output(OUTPUT_PIN, GPIO.HIGH)
-        if pumpIsOn = True:
-            print("Current Speed: ", hits)
+            GPIO.output(OUTPUT_PIN, GPIO.LOW)
+        #if pumpIsOn = True:
+        #    print("Current Speed: ", hits)
     finally:
         if pumpIsOn is True:
             print("PUMP OFF")
-        GPIO.output(OUTPUT_PIN, GPIO.LOW)
+        GPIO.output(OUTPUT_PIN, GPIO.HIGH)
         listen()
 
 def listen():
     cleanup()
     setup()
     print("LISTENING")
-    GPIO.add_event_detect(INPUT_PIN, GPIO.BOTH, callback=lambda pin: inputChange(), bouncetime = 500)
+    GPIO.add_event_detect(INPUT_PIN, GPIO.BOTH, callback=lambda pin: inputChange(), bouncetime = 100)
     try:
         while True:
             sleep(1)
