@@ -39,18 +39,22 @@ def inputChange():
                 sleep(0.001)
             currentSpeed = hits
             if pumpIsOn is False and currentSpeed > 1:
-                print("PUMP ON")
+                #print("PUMP ON")
                 pumpIsOn = True
                 GPIO.output(PUMP_CONTROL_PIN, PUMP_CONTROL_ON)
             #if pumpIsOn = True:
             #    print("Current Speed: ", hits)
     finally:
-        if pumpIsOn is True:
-            print("PUMP OFF")
+        #if pumpIsOn is True:
+            #print("PUMP OFF")
         GPIO.output(PUMP_CONTROL_PIN, PUMP_CONTROL_OFF)
-        listen()
+        sleep(2)
+        cleanup()
+        setup()
+        GPIO.add_event_detect(SENSOR_INPUT_PIN, GPIO.BOTH, callback=lambda pin: inputChange(), bouncetime = 100)
 
 def listen():
+    sleep(2)
     cleanup()
     setup()
     print("LISTENING")
