@@ -1,1 +1,1 @@
-sudo python pump.py
+sudo ./pump_monitor.sh
