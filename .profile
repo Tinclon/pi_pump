@@ -1,1 +1,1 @@
-sudo ./pump_monitor.sh
+nohup sudo ./pump_monitor.sh
